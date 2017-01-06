@@ -1,0 +1,54 @@
+animal 54 [] GC:149
+animal 53 [] GC:148
+animal 14 [] GC:147
+animal 20 [plant 53] GC:145
+animal 6 [] GC:144
+animal 42 [] GC:143
+animal 28 [] GC:142
+animal 38 [] GC:141
+animal 17 [] GC:140
+animal 12 [] GC:139
+animal 7 [plant 44, plant 98] GC:136
+animal 10 [] GC:135
+animal 22 [] GC:132
+animal 51 [] GC:131
+animal 35 [] GC:130
+animal 52 [plant 70] GC:130
+animal 5 [plant 87, plant 35, plant 68] GC:126
+animal 4 [plant 23] GC:124
+animal 13 [] GC:123
+animal 1 [plant 105, plant 91, plant 100, plant 52, plant 69, plant 85, plant 97, plant 75, plant 102, plant 28, plant 78, plant 54, plant 73, plant 21, plant 95, plant 93, plant 59, plant 42, plant 33, plant 17, plant 103, plant 83, plant 51, plant 34, plant 101, plant 72, plant 88, plant 99, plant 89, plant 48, plant 92, plant 50, plant 66, plant 62, plant 43, plant 60, plant 76, plant 61, plant 31, plant 56, plant 37, plant 77, plant 47, plant 32, plant 82, plant 58, plant 90, plant 40, plant 81, plant 74, plant 86, plant 55, plant 45, plant 71, plant 11, plant 104, plant 64, plant 63, plant 65, plant 36, plant 96, plant 94, plant 39] GC:57
+animal 24 [] GC:56
+animal 40 [] GC:55
+animal 34 [] GC:54
+animal 46 [plant 8] GC:54
+animal 48 [] GC:53
+animal 23 [] GC:52
+animal 36 [] GC:51
+animal 45 [] GC:50
+animal 33 [plant 57] GC:50
+animal 47 [] GC:49
+animal 50 [] GC:48
+animal 2 [plant 49, plant 38, plant 13, plant 25, plant 19, plant 7, plant 6, plant 79, plant 20] GC:38
+animal 3 [plant 29, plant 15, plant 14, plant 22, plant 84, plant 30] GC:29
+animal 27 [] GC:28
+animal 16 [plant 12] GC:26
+animal 21 [plant 27] GC:24
+animal 25 [plant 26] GC:24
+animal 8 [plant 80, plant 67, plant 41, plant 46] GC:24
+animal 32 [] GC:23
+animal 49 [plant 4] GC:23
+animal 39 [] GC:22
+animal 15 [plant 24] GC:20
+animal 29 [] GC:19
+animal 19 [] GC:11
+animal 37 [] GC:10
+animal 18 [plant 18] GC:8
+animal 44 [] GC:7
+animal 9 [plant 16, plant 10] GC:7
+animal 41 [] GC:6
+animal 30 [plant 1] GC:6
+animal 26 [] GC:5
+animal 31 [plant 5] GC:5
+animal 43 [] GC:4
+animal 11 [plant 3, plant 9, plant 2] GC:1

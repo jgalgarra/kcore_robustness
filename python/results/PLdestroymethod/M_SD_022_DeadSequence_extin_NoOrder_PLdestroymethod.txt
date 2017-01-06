@@ -1,0 +1,110 @@
+animal 85 [] GC:316
+animal 94 [] GC:315
+animal 58 [] GC:314
+animal 19 [] GC:313
+animal 49 [] GC:312
+animal 66 [] GC:311
+animal 99 [] GC:310
+animal 16 [plant 200, plant 160, plant 162] GC:306
+animal 32 [] GC:305
+animal 68 [] GC:304
+animal 7 [plant 174, plant 181, plant 178] GC:300
+animal 8 [plant 179] GC:298
+animal 33 [plant 166, plant 201, plant 127, plant 195, plant 130, plant 161, plant 202] GC:290
+animal 61 [] GC:289
+animal 42 [plant 111] GC:287
+animal 57 [plant 156] GC:285
+animal 86 [] GC:284
+animal 60 [] GC:283
+animal 108 [] GC:282
+animal 109 [] GC:281
+animal 104 [] GC:280
+animal 5 [plant 186] GC:278
+animal 96 [] GC:277
+animal 77 [] GC:276
+animal 89 [] GC:275
+animal 97 [] GC:274
+animal 65 [plant 123] GC:272
+animal 83 [] GC:271
+animal 36 [plant 187, plant 116] GC:268
+animal 80 [] GC:267
+animal 30 [plant 198] GC:265
+animal 20 [plant 206, plant 152, plant 150, plant 158] GC:260
+animal 15 [plant 154, plant 159] GC:257
+animal 52 [plant 167] GC:255
+animal 40 [plant 176] GC:251
+animal 6 [plant 199, plant 165, plant 163, plant 155, plant 128] GC:243
+animal 88 [] GC:242
+animal 81 [] GC:241
+animal 46 [] GC:240
+animal 107 [] GC:239
+animal 59 [] GC:238
+animal 64 [plant 169] GC:236
+animal 37 [plant 189] GC:234
+animal 24 [] GC:233
+animal 23 [] GC:232
+animal 90 [] GC:231
+animal 51 [plant 147] GC:227
+animal 17 [plant 60, plant 124] GC:224
+animal 55 [plant 95] GC:222
+animal 12 [] GC:221
+animal 78 [] GC:220
+animal 103 [plant 113] GC:220
+animal 11 [] GC:219
+animal 48 [plant 193] GC:217
+animal 62 [] GC:216
+animal 71 [] GC:215
+animal 31 [plant 76, plant 191] GC:212
+animal 27 [] GC:211
+animal 54 [] GC:210
+animal 9 [plant 194, plant 74, plant 164, plant 89, plant 157, plant 192] GC:203
+animal 35 [plant 126] GC:201
+animal 44 [] GC:200
+animal 38 [] GC:199
+animal 74 [plant 105] GC:197
+animal 3 [plant 104, plant 110, plant 171] GC:193
+animal 43 [plant 153] GC:191
+animal 47 [] GC:190
+animal 100 [] GC:189
+animal 41 [] GC:188
+animal 84 [plant 119] GC:186
+animal 56 [] GC:176
+animal 2 [plant 107, plant 141, plant 100, plant 65, plant 132, plant 185, plant 108, plant 151, plant 143, plant 137, plant 106, plant 197, plant 133, plant 64, plant 98, plant 90, plant 134] GC:158
+animal 69 [] GC:157
+animal 82 [] GC:156
+animal 45 [plant 148] GC:154
+animal 92 [] GC:153
+animal 22 [] GC:152
+animal 50 [plant 80, plant 118, plant 121, plant 59, plant 120, plant 92] GC:152
+animal 18 [plant 175, plant 32] GC:149
+animal 25 [plant 203] GC:147
+animal 106 [plant 81] GC:147
+animal 21 [plant 103, plant 184] GC:144
+animal 95 [] GC:143
+animal 1 [plant 79, plant 138, plant 139, plant 149, plant 172, plant 25, plant 43, plant 84, plant 140, plant 61, plant 173, plant 40, plant 101] GC:129
+animal 91 [] GC:128
+animal 70 [] GC:127
+animal 13 [plant 53, plant 131, plant 145, plant 117, plant 109, plant 41, plant 69, plant 78, plant 144, plant 34, plant 146] GC:115
+animal 102 [] GC:114
+animal 98 [plant 129] GC:114
+animal 93 [] GC:113
+animal 105 [plant 63] GC:113
+animal 29 [plant 26, plant 142, plant 205, plant 87, plant 73, plant 196] GC:106
+animal 26 [plant 96, plant 39, plant 85, plant 33] GC:101
+animal 14 [plant 88, plant 37, plant 13, plant 17, plant 183, plant 135, plant 180, plant 46] GC:88
+animal 76 [plant 29, plant 182, plant 20] GC:88
+animal 67 [plant 55, plant 204] GC:85
+animal 34 [plant 49, plant 91, plant 102, plant 112] GC:78
+animal 28 [plant 93, plant 99, plant 190, plant 72, plant 57] GC:72
+animal 10 [plant 24, plant 56, plant 10, plant 47, plant 115, plant 58] GC:65
+animal 53 [plant 97, plant 9] GC:62
+animal 4 [plant 67, plant 114, plant 125, plant 52, plant 177, plant 19, plant 68, plant 170, plant 75, plant 38, plant 70, plant 54, plant 82, plant 15, plant 42, plant 45, plant 83, plant 23, plant 51, plant 168, plant 3, plant 2, plant 12, plant 22, plant 35, plant 36, plant 27, plant 94, plant 50, plant 66] GC:23
+animal 110 [] GC:22
+animal 63 [plant 28, plant 71, plant 86] GC:18
+animal 75 [plant 11, plant 18, plant 21] GC:18
+animal 87 [plant 5] GC:18
+animal 39 [plant 4, plant 14, plant 207, plant 6, plant 1, plant 44, plant 30, plant 62] GC:4
+animal 101 [plant 8] GC:4
+animal 79 [plant 7, plant 77] GC:4
+animal 73 [plant 136, plant 188, plant 31] GC:4
+animal 72 [plant 16, plant 48, plant 122] GC:1

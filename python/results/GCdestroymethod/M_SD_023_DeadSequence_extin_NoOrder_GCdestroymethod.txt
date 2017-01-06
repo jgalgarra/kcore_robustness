@@ -1,0 +1,8 @@
+animal 2 [plant 10] GC:21
+animal 7 [] GC:20
+animal 3 [plant 13] GC:18
+animal 6 [] GC:17
+animal 8 [] GC:16
+animal 5 [] GC:15
+animal 1 [plant 12, plant 8, plant 14, plant 6, plant 7, plant 9, plant 11, plant 15] GC:6
+animal 4 [plant 1, plant 3, plant 5, plant 2, plant 4] GC:1
