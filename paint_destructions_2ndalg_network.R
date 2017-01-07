@@ -26,11 +26,11 @@ calc_stats_network <- function(dfinput, network)
 for (method in (methodlist))
 {
   directorystr <- paste0("python/results/",method)
-  
+
   if (exists("dftot"))
     rm("dftot")
   ficheros <- Sys.glob(paste0(directorystr,"/DIAM_EXTIN_ALL_",method,"*.txt"))
-  
+
   for (j in ficheros)
   {
     dfparc <- read.csv(j,sep="\t")
@@ -43,7 +43,7 @@ for (method in (methodlist))
   networklist <- unique(dftot$Network)
   #networklist <- c("M_PL_005.csv")
   size_networks <- read.csv("extinctions/size_networks.csv")
-  
+
   for (network in networklist)
   {
     dfsal <- dftot[dftot$Network == network,]
@@ -63,10 +63,10 @@ for (method in (methodlist))
       dfip <- data.frame( index = "eigenc", removed = dfsal$eigenc[k])
       dfindiv <- rbind(dfindiv,dfip)
     }
-      
+
     dfindiv$index <- as.factor(dfindiv$index)
     dfindiv$removed <- 100*dfindiv$removed/gcsize
-    
+
     dfindiv <- filter(dfindiv, index!="NoOrder")
     o <- dfindiv %>% group_by(index,removed) %>% summarise(total=n())
     p <- dfindiv %>% group_by(index) %>% summarise(media=mean(removed))
@@ -97,11 +97,11 @@ for (method in (methodlist))
             panel.grid.major.y = element_line(linetype = 3, color="ivory3", size=0.25),
             panel.grid.major.x = element_blank(),
             plot.title = element_text(hjust = 0.5))
-    
-    
+
+
     dir.create(paste0("graphs/python/"), showWarnings = FALSE)
     dir.create(paste0("graphs/python/",method,"/"), showWarnings = FALSE)
-  
+
     ppi <- 300
     png(paste0("graphs/python/",method,"/",redname,".png"), width=(6*ppi), height=3*ppi, res=ppi)
     print(gr)

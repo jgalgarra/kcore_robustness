@@ -1,0 +1,11 @@
+M_PL_007 <- read.csv("data/M_PL_007.csv")
+M_PL_007_analysis <- read.csv("analysis_indiv_extended/M_PL_007_analysis.csv")
+bichos_kd <- M_PL_007_analysis[grep("pol",M_PL_007_analysis$Species),]
+bichos_kd <- c(1,3,7,13,15,2,11,20,12,8,6,5,10)
+bichos_mr <- c(3,1,7,15,32,6,14,33,13,31,8,16,10)
+M_PL_007_kd <- M_PL_007
+M_PL_007_kd[bichos_kd,2:ncol(M_PL_007)] <- 0
+write.csv(M_PL_007_kd,"datawip/M_PL_007_kd.csv",row.names = FALSE)
+M_PL_007_mr <- M_PL_007
+M_PL_007_mr[bichos_mr,2:ncol(M_PL_007)] <- 0
+write.csv(M_PL_007_mr,"datawip/M_PL_007_mr.csv",row.names = FALSE)

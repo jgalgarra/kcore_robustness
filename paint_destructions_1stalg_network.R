@@ -56,10 +56,10 @@ for (network in networklist)
     dfip <- data.frame( index = "eigenc", removed = dfsal$eigenc[k])
     dfindiv <- rbind(dfindiv,dfip)
   }
-    
+
   dfindiv$index <- as.factor(dfindiv$index)
   dfindiv$removed <- 100*dfindiv$removed/gcsize
-  
+
   dfindiv <- filter(dfindiv, index!="NoOrder")
   o <- dfindiv %>% group_by(index,removed) %>% summarise(total=n())
   p <- dfindiv %>% group_by(index) %>% summarise(media=mean(removed))
@@ -77,7 +77,7 @@ for (network in networklist)
     geom_hline(yintercept=min(p$media),color = "bisque2", size=0.5, alpha = 0.6) +
     geom_jitter(aes(x=index,y=removed,fill=factor(index),color=factor(index)),width=dfindiv$width,height=recorrido/1000,alpha=0.15)+
     geom_point(data=p,aes(index, y=media),size=3,shape=p$pshape,fill=p$pcolor,color=p$pcolor) +
-    
+
     theme_bw()+
     xlab("")+ylab("Removed species (%)\n")+
     ggtitle(sprintf("%s best mean performance: %0.3f",redname,min(p$media))) +
@@ -88,9 +88,9 @@ for (network in networklist)
           panel.grid.major.y = element_line(linetype = 3, color="ivory3", size=0.25),
           panel.grid.major.x = element_blank(),
           plot.title = element_text(hjust = 0.5))
-  
-  
-  
+
+
+
   dir.create("graphs/FIRST", showWarnings = FALSE)
 
   ppi <- 300

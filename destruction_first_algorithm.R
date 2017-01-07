@@ -5,7 +5,7 @@ rm(list=ls())
 library(kcorebip)
 directorystr <- "data/"
 
-read_network <- function(namenetwork, guild_astr = "pl", guild_bstr = "pol", directory="")
+read_network_fast <- function(namenetwork, guild_astr = "pl", guild_bstr = "pol", directory="")
 {
 
   # Reading species names
@@ -33,7 +33,7 @@ read_network <- function(namenetwork, guild_astr = "pl", guild_bstr = "pol", dir
 
 analyze_network_fast <- function(namenetwork, directory="", guild_a = "pl", guild_b = "pol")
 {
-  nread <- read_network(namenetwork, directory = directory, guild_astr = guild_a, guild_bstr = guild_b)
+  nread <- read_network_fast(namenetwork, directory = directory, guild_astr = guild_a, guild_bstr = guild_b)
   g <- as.undirected(nread$g)
   g_cores <- graph.coreness(g)
   m <- nread$matrix
@@ -178,8 +178,8 @@ dir.create("datatemp/", showWarnings = FALSE)
 
 # If previous simulations were performed, extinctions may start far ahead 1 link
 
-serie <- 3
-maxciclos <- 25
+serie <- 1000
+maxciclos <- 2
 for (n in 1:maxciclos)
 {
   if (alldir){
