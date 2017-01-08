@@ -148,7 +148,7 @@ qb <- ggplot(results_by_q_best, aes(x=giant_component, y = comp_perf, color = In
   geom_point( size = 3,alpha = 0.4) + scale_x_log10() + xlab(xtxt2)+
   scale_color_manual(values  = cols) + ggtitle("Destruction removing species of both classes. Top performer")+
   theme_bw()  +
-  scale_shape_manual(values = pshapes) +
+  #scale_shape_manual(values = pshapes) +
   scale_y_continuous(name =ytxt,breaks=c(0,25,50),labels=c("50%","25%","0%"), limits=c(0,50))+
   theme(          axis.title.x = element_text(face="bold",color="grey30", size=10),
                   axis.title.y = element_text(face="bold",color="grey30", size=10),

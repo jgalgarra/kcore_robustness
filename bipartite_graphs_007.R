@@ -1,6 +1,11 @@
 # Auxiliar script to create a bipartite graph in screen
 
 library(kcorebip)
+library(igraph)
+
+giant.component <- function(graph) {
+  cl <- clusters(graph)
+  induced.subgraph(graph, which(cl$membership == which.max(cl$csize)))}
 
 plot_bipartite <- function(bg, aspect_ratio = 9/35, vframecolor = "grey70", vlabelcex = 4,
                            vsize = 4, vcolor = c("lightblue","pink2"), labelcolor = c("blue","red"),
@@ -79,22 +84,22 @@ bp <- get_bipartite(result_analysis$graph, plot_graphs = FALSE)
 plot_bipartite(bp, aspect_ratio = 1/6,vlabelcex=2.0,vsize = 5, vframecolor = "grey20",
                color_link = "grey20", vertical = FALSE, nname = redname)
 
-# ziggurat_graph("data/","M_PL_007.csv", height_box_y_expand = 0.75,
-#                lsize_legend = 7, lsize_core_box = 6,corebox_border_size=1,
-#                plotsdir = "datawip/",color_link = "slategray3", alpha_link = 0.5,
-#                lsize_kcoremax = 6,lsize_zig = 5,lsize_kcore1 = 5,
-#                displace_legend = c(-0.2,0.2),displace_outside_component = c(-0.5,0.6),print_to_file = TRUE)
-#
-#
-# ziggurat_graph("datawip/","M_PL_007_kd.csv", height_box_y_expand = 0.75,
-#                lsize_legend = 7, lsize_core_box = 6,corebox_border_size=1,
-#                plotsdir = "datawip/",color_link = "slategray3", alpha_link = 0.5,
-#                lsize_kcoremax = 6,lsize_zig = 5,lsize_kcore1 = 5,
-#                displace_legend = c(-0.2,0.2),displace_outside_component = c(-0.5,0.6),print_to_file = TRUE)
-#
-#
-# ziggurat_graph("datawip/","M_PL_007_mr.csv", height_box_y_expand = 0.75,
-#                lsize_legend = 7, lsize_core_box = 6,corebox_border_size=1,
-#                plotsdir = "datawip/",color_link = "slategray3", alpha_link = 0.5,
-#                lsize_kcoremax = 6,lsize_zig = 5,lsize_kcore1 = 5,
-#                displace_legend = c(-0.2,0.2),displace_outside_component = c(-0.5,0.6),print_to_file = TRUE)
+ziggurat_graph("data/","M_PL_007.csv", height_box_y_expand = 1,
+               lsize_legend = 7, lsize_core_box = 6,corebox_border_size=1,
+               plotsdir = "datawip/",color_link = "slategray3", alpha_link = 0.5,
+               lsize_kcoremax = 6,lsize_zig = 5,lsize_kcore1 = 5,
+               displace_legend = c(-0.2,0.2),displace_outside_component = c(-1.1,0.6),print_to_file = TRUE)
+
+
+ziggurat_graph("datawip/","M_PL_007_kd.csv", height_box_y_expand = 0.75,
+               lsize_legend = 7, lsize_core_box = 6,corebox_border_size=1,
+               plotsdir = "datawip/",color_link = "slategray3", alpha_link = 0.5,
+               lsize_kcoremax = 7,lsize_zig = 6,lsize_kcore1 = 5.5,
+               displace_legend = c(-0.2,0.4),displace_outside_component = c(-0.4,0.6),print_to_file = TRUE)
+
+
+ziggurat_graph("datawip/","M_PL_007_mr.csv", height_box_y_expand = 1.55,
+               lsize_legend = 7, lsize_core_box = 6,corebox_border_size=1,aspect_ratio = 1.2,
+               plotsdir = "datawip/",color_link = "slategray3", alpha_link = 0.5,
+               lsize_kcoremax = 7,lsize_zig = 6,lsize_kcore1 = 5.5,
+               displace_legend = c(-0.2,0.2),displace_outside_component = c(-0.6,0.6),print_to_file = TRUE)

@@ -178,8 +178,8 @@ dir.create("datatemp/", showWarnings = FALSE)
 
 # If previous simulations were performed, extinctions may start far ahead 1 link
 
-serie <- 1000
-maxciclos <- 2
+serie <- 5
+maxciclos <- 20
 for (n in 1:maxciclos)
 {
   if (alldir){
