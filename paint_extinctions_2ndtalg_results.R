@@ -12,16 +12,20 @@ comparativa <- function(results_by_r,baseIndex = "krisk", bestindexline = FALSE)
   scale_x_continuous(name="",breaks = results_by_r[results_by_r$Index == baseIndex,]$index, labels = plabels)+
   ggtitle("Destruction removing animal species")+
   geom_point(data = results_by_r,
-            aes(x = index, y = comp_perf, shape = Index, fill = Index, color = Index), size = 2, alpha= 0.45)+
+            aes(x = index, y = comp_perf, shape = Index, fill = Index, color = Index), size = 3, alpha= 0.45)+
   scale_color_manual(values  = cols) +
   scale_shape_manual(values = pshapes) +
   scale_y_continuous(name =ytxt)+
-  theme_bw() + theme(axis.text.x  = element_text(face="bold", margin = unit(c(1, 1, 1, 1), "mm"),angle=90, vjust=0, size=8),
-                     axis.title.x = element_text(face="bold",color="grey30", size=14),
-                     axis.title.y = element_text(face="bold",color="grey30", size=11),
-                     panel.grid.minor = element_blank(),
-                     plot.title = element_text(hjust = 0.5),
-                     axis.text.y = element_text(face="bold", color="grey30", size=12)
+    theme_bw() + theme(axis.text.x  = element_text(face="bold", angle=90, hjust= 1,vjust=0.75, size=9),
+                       axis.title.x = element_text(face="bold",color="grey30", size=14),
+                       axis.title.y = element_text(face="bold",color="grey30", size=14),
+                       panel.grid.minor = element_blank(),
+                       panel.grid.major = element_line(color="grey30", size=0.5, linetype = 3),
+                       legend.position="bottom",
+                       legend.title = element_blank(),
+                       legend.text = element_text(face="bold", color="grey30", size=14),
+                       plot.title = element_text(hjust = 0.5, size=16),
+                       axis.text.y = element_text(face="bold", color="grey30", size=12)
                      )
   if (bestindexline){
     results_best <- results_by_r[results_by_r$Index == baseIndex,]
@@ -37,11 +41,11 @@ for (method in listamethods)
 {
   if (method == "GCdestroymethod")
   {
-    ytxt <- "AUC measuring suviving Giant Component size"
+    ytxt <- "AUC (Giant Component size)"
     xtxt <- "Network"
     xtxt2 <- "Species in Giant Component"
   } else {
-    ytxt <- "AUC measuring suviving vegetal species"
+    ytxt <- "AUC (suviving vegetal species)"
     xtxt <- "Red"
     xtxt2 <- "Especies en la componente gigante"
   }
@@ -84,7 +88,7 @@ for (method in listamethods)
 
   results_by_row <- results_by_row[order(results_by_row$index),]
   cols <- c("kdegree" = "darkgreen", "eigen" = "black","degree" = "blue", "krisk" = "red", "best" = "forestgreen", "MusRank" = "bisque3")
-  pshapes <- c("kdegree" = 17, "eigen" = 8,"degree" = 15, "krisk" = 16, "best" = 24, "MusRank" = 25)
+  pshapes <- c("kdegree" = 17, "eigen" = 18,"degree" = 15, "krisk" = 16, "best" = 24, "MusRank" = 25)
 
   results_by_r <- results_by_row[is.element(results_by_row$Index, c("krisk","kdegree","degree","eigen","MusRank")),]
   if (method == "GCdestroymethod"){
@@ -134,7 +138,7 @@ for (method in listamethods)
   # summary(mo)
 
   ppi <- 300
-  png(paste0("graphs/2ndtalg_all_comparison_",method,".png"), width=(15*ppi), height=5*ppi, res=ppi)
+  png(paste0("graphs/2ndtalg_all_comparison_",method,".png"), width=(15*ppi), height=6*ppi, res=ppi)
   print(todos)
   dev.off()
 

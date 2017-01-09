@@ -25,16 +25,20 @@ comparativa <- function(results_by_r,baseIndex = "krisk", bestindexline = FALSE)
     scale_x_continuous(name="",breaks = results_by_r[results_by_r$Index == baseIndex,]$index, labels = plabels)+
     ggtitle("Destruction removing species of both classes")+
     geom_point(data = results_by_r,
-               aes(x = index, y = comp_perf, shape = Index, fill = Index, color = Index), size = 2, alpha= 0.45)+
+               aes(x = index, y = comp_perf, shape = Index, fill = Index, color = Index), size = 3, alpha= 0.45)+
     scale_color_manual(values  = cols) +
     scale_shape_manual(values = pshapes) +
     scale_y_continuous(name =ytxt)+
-    theme_bw() + theme(axis.text.x  = element_text(face="bold", margin = unit(c(1, 1, 1, 1), "mm"),angle=90, vjust=0, size=8),
+    theme_bw() + theme(axis.text.x  = element_text(face="bold", angle=90, hjust= 1,vjust=0.75, size=9),
                        axis.title.x = element_text(face="bold",color="grey30", size=14),
-                       axis.title.y = element_text(face="bold",color="grey30", size=11),
+                       axis.title.y = element_text(face="bold",color="grey30", size=12),
                        panel.grid.minor = element_blank(),
-                       plot.title = element_text(hjust = 0.5),
-                       axis.text.y = element_text(face="bold", color="grey30", size=12)
+                       panel.grid.major = element_line(color="grey30", size=0.5, linetype = 3),
+                       legend.position="bottom",
+                       legend.title = element_blank(),
+                       legend.text = element_text(face="bold", color="grey30", size=14),
+                       plot.title = element_text(hjust = 0.5, size=16),
+                       axis.text.y = element_text(face="bold", color="grey30", size=14)
     )
   if (bestindexline){
     results_best <- results_by_r[results_by_r$Index == baseIndex,]
@@ -43,27 +47,7 @@ comparativa <- function(results_by_r,baseIndex = "krisk", bestindexline = FALSE)
   }
   return(pl)
 }
-# comparativa <- function(results_by_r,baseIndex = "krisk")
-# {
-#   plabels <- gsub("M_","",unlist(strsplit(as.character(results_by_r[results_by_r$Index == baseIndex,]$Network),".csv")))
-#   pl <- ggplot(data = results_by_r) +
-#   #geom_line(aes(x = index, y = comp_perf, fill = Index, color = Index))+
-#   scale_x_continuous(name="",breaks = results_by_r[results_by_r$Index == baseIndex,]$index, labels = plabels)+
-#   ggtitle("Destruction removing species of both classes")+
-#   geom_point(data = results_by_r,
-#             aes(x = index, y = comp_perf, shape = Index, fill = Index, color = Index), size = 2, alpha= 0.45)+
-#   scale_color_manual(values  = cols) +
-#   scale_shape_manual(values = pshapes) +
-#   scale_y_continuous(name =ytxt,breaks=c(0,25,50),labels=c("50%","25%","0%"), limits=c(0,55))+
-#   theme_bw() + theme(axis.text.x  = element_text(face="bold", margin = unit(c(1, 1, 1, 1), "mm"),angle=90, vjust=0, size=8),
-#                      axis.title.x = element_text(face="bold",color="grey30", size=14),
-#                      axis.title.y = element_text(face="bold",color="grey30", size=11),
-#                      panel.grid.minor = element_blank(),
-#                      plot.title = element_text(hjust = 0.5),
-#                      axis.text.y = element_text(face="bold", color="grey30", size=12)
-#                      )
-#   return(pl)
-# }
+
 results_ext <- read.csv("extinctions/Destructions_1st_mean.csv")
 
 results_ext <- results_ext[order(-results_ext$krisk),]
@@ -98,7 +82,7 @@ for (i in 1:nrow(aux_ord_df))
 
 results_by_row <- results_by_row[order(results_by_row$index),]
 cols <- c("kdegree" = "darkgreen", "eigen" = "black","degree" = "blue", "krisk" = "red", "best" = "forestgreen")
-pshapes <- c("kdegree" = 17, "eigen" = 8,"degree" = 15, "krisk" = 16, "best" = 24)
+pshapes <- c("kdegree" = 17, "eigen" = 18,"degree" = 15, "krisk" = 16, "best" = 24)
 
 
 results_by_r <- results_by_row[is.element(results_by_row$Index, c("krisk","kdegree","degree","eigen")),]
@@ -148,8 +132,8 @@ qb <- ggplot(results_by_q_best, aes(x=giant_component, y = comp_perf, color = In
   geom_point( size = 3,alpha = 0.4) + scale_x_log10() + xlab(xtxt2)+
   scale_color_manual(values  = cols) + ggtitle("Destruction removing species of both classes. Top performer")+
   theme_bw()  +
-  #scale_shape_manual(values = pshapes) +
-  scale_y_continuous(name =ytxt,breaks=c(0,25,50),labels=c("50%","25%","0%"), limits=c(0,50))+
+  scale_shape_manual(values = pshapes) +
+  scale_y_continuous(name =ytxt)+ #,breaks=c(0,25,50),labels=c("50%","25%","0%"), limits=c(0,50))+
   theme(          axis.title.x = element_text(face="bold",color="grey30", size=10),
                   axis.title.y = element_text(face="bold",color="grey30", size=10),
                   axis.text.x = element_text(face="bold", color="grey30", size=10),
@@ -161,7 +145,7 @@ mo <- lm(formula = results_by_q$performance ~ log(results_by_q$giant_component))
 summary(mo)
 
 ppi <- 300
-png(paste0("graphs/1stalg_all_comparison.png"), width=(15*ppi), height=5*ppi, res=ppi)
+png(paste0("graphs/1stalg_all_comparison.png"), width=(15*ppi), height=6*ppi, res=ppi)
 print(todos)
 dev.off()
 

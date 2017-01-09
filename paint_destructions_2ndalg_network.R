@@ -65,7 +65,7 @@ for (method in (methodlist))
     }
 
     dfindiv$index <- as.factor(dfindiv$index)
-    dfindiv$removed <- 100*dfindiv$removed/gcsize
+
 
     dfindiv <- filter(dfindiv, index!="NoOrder")
     o <- dfindiv %>% group_by(index,removed) %>% summarise(total=n())
@@ -89,7 +89,7 @@ for (method in (methodlist))
       geom_point(data=p,aes(index, y=media),size=3,shape=p$pshape,fill=p$pcolor,color=p$pcolor) +
       theme_bw()+
       xlab("")+ylab(paste0("AUC ",methodstr[method],"\n"))+
-      ggtitle(sprintf("%s best mean performance: %0.5f",redname,min(p$media))) +
+      ggtitle(sprintf("%s best average performance: %0.3f",gsub("M_","",redname),min(p$media))) +
       theme(legend.position = "none",
             axis.text.x = element_text(face="bold", color="grey30", size=9),
             axis.text.y = element_text(face="bold", color="grey30", size=9),

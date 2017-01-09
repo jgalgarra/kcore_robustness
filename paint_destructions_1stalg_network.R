@@ -63,7 +63,7 @@ for (network in networklist)
   dfindiv <- filter(dfindiv, index!="NoOrder")
   o <- dfindiv %>% group_by(index,removed) %>% summarise(total=n())
   p <- dfindiv %>% group_by(index) %>% summarise(media=mean(removed))
-  p$pshape = 18
+  p$pshape = 20
   p[p$media == min(p$media),]$pshape = 19
   p$pcolor = "grey15"
   p[p$media == min(p$media),]$pcolor = "black"
@@ -80,7 +80,7 @@ for (network in networklist)
 
     theme_bw()+
     xlab("")+ylab("Removed species (%)\n")+
-    ggtitle(sprintf("%s best mean performance: %0.3f",redname,min(p$media))) +
+    ggtitle(sprintf("%s best average performance: %0.3f",gsub("M_","",redname),min(p$media))) +
     theme(legend.position = "none",
           axis.text.x = element_text(face="bold", color="grey30", size=12),
           axis.text.y = element_text(face="bold", color="grey30", size=10),
