@@ -3,7 +3,7 @@ library(dplyr)
 resdest <- read.csv(paste0("extinctions/Destructions_1st_mean.csv"))
 
 min_giant_component <- 0
-resdest <- resdest[resdest$giant_component > min_giant_component,]
+resdest <- resdest[resdest$giant_component >= min_giant_component,]
 
 countKrisk <- 0
 countKdegree <- 0

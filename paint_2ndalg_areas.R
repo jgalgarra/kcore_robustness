@@ -16,9 +16,9 @@ library(gridExtra)
 pintacurva <- function(datos_f,area, pcolor, texty, titulo = "")
 {
   
-  ls <- ggplot(data = datos_f, aes(x = Primary*100, y = RemainingGC*100)) + geom_area(color = pcolor,fill=pcolor,alpha=0.3) +
-    theme_bw() + ylab(texty)+xlab(paste0(xtext,crit))+ggtitle(titulo)+xlim(c(0,100))+ylim(c(0,100))+
-    geom_text(data = datos_f,aes(x = 55, y= 85, label = sprintf("Area = %0.4f",area))
+  ls <- ggplot(data = datos_f, aes(x = Primary, y = RemainingGC)) + geom_area(color = pcolor,fill=pcolor,alpha=0.3) +
+    theme_bw() + ylab(texty)+xlab(paste0(xtext,crit))+ggtitle(titulo)+#xlim(c(0,100))+ylim(c(0,100))+
+    geom_text(data = datos_f,aes(x = 0.55, y= 0.85, label = sprintf("Area = %0.4f",area))
               , color= "black", hjust= 0, size = 5) +
     theme(axis.line.x = element_line(color="black", size = 0.5),
           axis.line.y = element_line(color="black", size = 0.5))+
@@ -32,36 +32,23 @@ pintacurva <- function(datos_f,area, pcolor, texty, titulo = "")
           legend.text = element_text(size=9, face="bold"),
           panel.spacing = unit(22, "mm"),
           plot.title = element_text(hjust = 1.2),
-          axis.text = element_text(face="bold", size=12),
-          axis.title.x = element_text(face="bold", size=12),
-          axis.title.y  = element_text(face="bold", size=12))
+          axis.text = element_text(face="bold", size=14),
+          axis.title.x = element_text(face="bold", size=14),
+          axis.title.y  = element_text(face="bold", size=14))
   return(ls)
   
 }
 
-languageEl <- "EN"
+
 crit <- "MusRank"
 metodo <- "PLdestroymethod"
-if (metodo == "GCdestroymethod") {
-  if (languageEl == "EN"){
-    ytext <- "Remaining Giant Component (%)\n"
-  } else {
-    ytext <- "Componente gigante que queda (%)\n"
-  }
+if (metodo == "GCdestroymethod"){
+    ytext <- "Remaining fraction of Giant Component\n"
+} else  
+    ytext <- "Fraction of surviving plants (%)\n "
 
-} else  {
-  if (languageEl == "ES"){
-    ytext <- "Plantas sobrevivientes (%)\n"
-  } else {
-    ytext <- "Surviving plants (%)\n "
-  }
-}
+xtext <- "\nRemoved fraction of animal species by "
 
-if (languageEl == "ES"){
-  xtext <- "\nAnimales eliminados (%) segun "
-} else {
-  xtext <- "\nRemoved animal species (%) by "
-}
 
 dfGC <- read.csv("python/results/mean_all_GCdestroymethod.csv")
 names(dfGC) <- c("X","Network","area_NoOrder","area_MR","area_Krisk","area_Kdegree","area_Degree","area_eigenc")
@@ -99,24 +86,24 @@ for (red in listaredes)
   crit <- "MusRank"
   datos_criterio <- read.table(paste0("python/results/",metodo,"/",red,"_Diam_extin_",crit,".txt"), quote="\"", comment.char="")
   names(datos_criterio) <- c("Primary","RemainingGC")
-  p <- pintacurva(datos_criterio,areaGCmr,"pink","Surviving GC (%)")
+  p <- pintacurva(datos_criterio,areaGCmr,"bisque3","Surviving GC (%)")
   crit <- "Kdegree"
   datos_criterio <- read.table(paste0("python/results/",metodo,"/",red,"_Diam_extin_",crit,".txt"), quote="\"", comment.char="")
   names(datos_criterio) <- c("Primary","RemainingGC")
-  q <- pintacurva(datos_criterio,areaGCkd,"lightblue","Surviving GC (%)")
+  q <- pintacurva(datos_criterio,areaGCkd,"lightgreen","Surviving GC (%)")
   metodo <- "PLdestroymethod"
   crit <- "MusRank"
   datos_criterio <- read.table(paste0("python/results/",metodo,"/",red,"_Diam_extin_",crit,".txt"), quote="\"", comment.char="")
   names(datos_criterio) <- c("Primary","RemainingGC")
-  r <- pintacurva(datos_criterio,areaPLmr,"pink","Surviving plant species (%)")
+  r <- pintacurva(datos_criterio,areaPLmr,"bisque3","Surviving plant species (%)")
   crit <- "Kdegree"
   datos_criterio <- read.table(paste0("python/results/",metodo,"/",red,"_Diam_extin_",crit,".txt"), quote="\"", comment.char="")
   names(datos_criterio) <- c("Primary","RemainingGC")
-  s <- pintacurva(datos_criterio,areaPLkd,"lightblue","Surviving plant species (%)")
+  s <- pintacurva(datos_criterio,areaPLkd,"lightgreen","Surviving plant species (%)")
 
   ppi <- 300
   png(paste0("graphs/AREAS/",red,"_extinction_plot.png"), width=(12*ppi), height=10*ppi, res=ppi)
   grid.arrange(p,q,r,s,nrow=2,ncol=2,
-               top = textGrob(paste("Network",red), vjust = 1, gp = gpar(fontface = "bold", cex = 1.5)))
+               top = textGrob(paste("Network",gsub("M_","",red)), vjust = 1, gp = gpar(fontface = "bold", cex = 1.5)))
   dev.off()
 }
