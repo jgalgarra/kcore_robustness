@@ -106,7 +106,8 @@ gen_deg_distribution <- function(red, seq_breaks = seq(1,26, by=5))
   dist_kdeg <- ggplot(auxdf, aes(x=kx, y=ky, xend=kxend, yend=kyend)) +
     geom_point(data = pointdfk, aes(x=kxend, y=ky),  size = 0.7, color = "palegreen4", alpha = 0.5) +  # Open points to right
     geom_segment(color = "palegreen4", size=0.5, alpha= 0.5)+  # Horizontal line segments
-    scale_x_log10(breaks = kseq_breaks) + scale_y_log10(breaks = yseq_breaks) + xlab("kdegree") + ylab(cumulativetxt) + ggtitle("") + ylab("")+
+    scale_x_log10(breaks = kseq_breaks) + scale_y_log10(breaks = yseq_breaks) + xlab("kdegree") + 
+    ylab(cumulativetxt) + ggtitle("") + ylab("")+
     theme_bw() + 
     theme(
       panel.grid.minor.x = element_blank(),
@@ -114,7 +115,8 @@ gen_deg_distribution <- function(red, seq_breaks = seq(1,26, by=5))
       axis.title.x = element_text(color="grey30", size=13),
       axis.title.y = element_text(color="grey30", size=13),
       axis.text.x = element_text(face="bold", color="grey30", size=10),
-      axis.text.y = element_text(face="bold", color="grey30", size=10)
+      axis.text.y = element_text(face="bold", color="grey30", size=10),
+      plot.title = element_text(size=16,lineheight=.8, face="bold",hjust = 0.5)
     )
   
   

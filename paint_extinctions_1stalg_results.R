@@ -25,25 +25,25 @@ comparativa <- function(results_by_r,baseIndex = "krisk", bestindexline = FALSE)
     scale_x_continuous(name="",breaks = results_by_r[results_by_r$Index == baseIndex,]$index, labels = plabels)+
     ggtitle("Destruction removing species of both classes")+
     geom_point(data = results_by_r,
-               aes(x = index, y = comp_perf, shape = Index, fill = Index, color = Index), size = 3, alpha= 0.45)+
+               aes(x = index, y = comp_perf, shape = Index, fill = Index, color = Index), size = 2, stroke = 1.5)+
     scale_color_manual(values  = cols) +
     scale_shape_manual(values = pshapes) +
     scale_y_continuous(name =ytxt)+
     theme_bw() + theme(axis.text.x  = element_text(face="bold", angle=90, hjust= 1,vjust=0.75, size=12),
-                       axis.title.x = element_text(face="bold",color="grey30", size=15),
-                       axis.title.y = element_text(face="bold",color="grey30", size=15),
+                       axis.title.x = element_text(face="bold",color="grey30", size=16),
+                       axis.title.y = element_text(face="bold",color="grey30", size=16),
                        panel.grid.minor = element_blank(),
-                       panel.grid.major = element_line(color="grey30", size=0.5, linetype = 3),
+                       panel.grid.major = element_line(color="grey30", size=0.25, linetype = 3),
                        legend.position="bottom",
                        legend.title = element_blank(),
-                       legend.text = element_text(face="bold", color="grey30", size=15),
+                       legend.text = element_text(face="bold", color="grey30", size=16),
                        plot.title = element_text(hjust = 0.5, size=18),
-                       axis.text.y = element_text(face="bold", color="grey30", size=15)
+                       axis.text.y = element_text(face="bold", color="grey30", size=16)
     )
   if (bestindexline){
     results_best <- results_by_r[results_by_r$Index == baseIndex,]
     pl <- pl + geom_line(data = results_best, aes(x = index, y = comp_perf),
-                         color = cols[baseIndex], size = 0.5, alpha= 0.45, linetype = 1)
+                         color = cols[baseIndex], size = 0.8, alpha= 0.45, linetype = 1)
   }
   return(pl)
 }
@@ -81,8 +81,8 @@ for (i in 1:nrow(aux_ord_df))
   results_by_row[results_by_row$Network == aux_ord_df$Network[i],]$index <- aux_ord_df$index[i]
 
 results_by_row <- results_by_row[order(results_by_row$index),]
-cols <- c("kdegree" = "darkgreen", "eigen" = "black","degree" = "blue", "krisk" = "red", "best" = "forestgreen")
-pshapes <- c("kdegree" = 17, "eigen" = 18,"degree" = 15, "krisk" = 16, "best" = 24)
+cols <- c("kdegree" = "darkgreen", "eigen" = "violetred3","degree" = "blue", "krisk" = "red", "best" = "forestgreen")
+pshapes <- c("kdegree" = 0, "eigen" = 20,"degree" = 3, "krisk" = 4, "best" = 24)
 
 
 results_by_r <- results_by_row[is.element(results_by_row$Index, c("krisk","kdegree","degree","eigen")),]
@@ -118,8 +118,10 @@ for (m in 1:nrow(results_by_q))
 }
 
 results_by_q_best <- results_by_q[results_by_q$isbest,]
-q <- ggplot(results_by_q, aes(x=giant_component, y = comp_perf, color = Index)) + geom_point(alpha = 0.3, size=2) + scale_x_log10() + xlab(xtxt2)+
+q <- ggplot(results_by_q, aes(x=giant_component, y = comp_perf, color = Index, shape = Index)) +
+  geom_point( size = 2,lwd = 1.5) + scale_x_log10() + xlab(xtxt2)+
   scale_color_manual(values  = cols) +
+  scale_shape_manual(values = pshapes) +
     theme_bw()  +
    scale_y_continuous(name =ytxt,breaks=c(0,25,50),labels=c("50%","25%","0%"), limits=c(0,50))+
   theme(          axis.title.x = element_text(face="bold",color="grey30", size=10),
@@ -129,33 +131,33 @@ q <- ggplot(results_by_q, aes(x=giant_component, y = comp_perf, color = Index)) 
 q <- q + facet_grid(Index ~.)
 
 qb <- ggplot(results_by_q_best, aes(x=giant_component, y = comp_perf, color = Index, shape = Index)) +
-  geom_point( size = 3,alpha = 0.4) + scale_x_log10() + xlab(xtxt2)+
+  geom_point( size = 2,stroke = 1.5) + scale_x_log10() + xlab(xtxt2)+
   scale_color_manual(values  = cols) + ggtitle("Destruction removing species of both classes. Top performer")+
   theme_bw()  +
   scale_shape_manual(values = pshapes) +
   scale_y_continuous(name =ytxt)+ #,breaks=c(0,25,50),labels=c("50%","25%","0%"), limits=c(0,50))+
   theme(axis.text.x  = element_text(face="bold", angle=90, hjust= 1,vjust=0.75, size=12),
-      axis.title.x = element_text(face="bold",color="grey30", size=15),
-      axis.title.y = element_text(face="bold",color="grey30", size=15),
+      axis.title.x = element_text(face="bold",color="grey30", size=16),
+      axis.title.y = element_text(face="bold",color="grey30", size=16),
       panel.grid.minor = element_blank(),
       panel.grid.major = element_line(color="grey30", size=0.5, linetype = 3),
       legend.position="bottom",
       legend.title = element_blank(),
-      legend.text = element_text(face="bold", color="grey30", size=15),
+      legend.text = element_text(face="bold", color="grey30", size=16),
       plot.title = element_text(hjust = 0.5, size=18),
-      axis.text.y = element_text(face="bold", color="grey30", size=15)
+      axis.text.y = element_text(face="bold", color="grey30", size=16)
   )
 
 mo <- lm(formula = results_by_q$performance ~ log(results_by_q$giant_component))
 summary(mo)
 
 ppi <- 300
-png(paste0("graphs/1stalg_all_comparison.png"), width=(15*ppi), height=6*ppi, res=ppi)
+png(paste0("graphs/1stalg_all_comparison.png"), width=(15*ppi), height=7*ppi, res=ppi)
 print(todos)
 dev.off()
 
 ppi <- 300
-png(paste0("graphs/1st_alg_best_sizeGC.png"), width=(15*ppi), height=6*ppi, res=ppi)
+png(paste0("graphs/1st_alg_best_sizeGC.png"), width=(15*ppi), height=7*ppi, res=ppi)
 print(qb)
 dev.off()
 
