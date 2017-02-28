@@ -79,7 +79,7 @@ if(analizatodo)
       if (length(radiuss[radiuss!=Inf])>0)
         resultdf[indexrow,]$MaxKradius <- max(radiuss[radiuss!=Inf])
       else {
-        print("ALAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARRRRRRRRRRRRRRRRRRRRRRMAAAAAAAAAAAAAA")
+        print("ALAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARRRRRRRRRRRRRRRRRRRRRRM!!!!")
         resultdf[indexrow,]$MaxKradius <- NA
       }
       if (is.na(resultdf[indexrow,]$MeanKradius)){

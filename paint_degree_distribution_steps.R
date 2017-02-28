@@ -168,27 +168,27 @@ grid.arrange(grafs$dist_deg,grafs$dist_kdeg,grafs$dist_dkdeg, ncol=3, nrow=1, wi
 dev.off()
 
 
-load("results/datos_analisis_condegs.RData")
-distr2 <- ggplot(data = resultdf, aes(x = sqrt(kdegdegRsq) ))+ 
-  geom_histogram(  fill = "palegreen4", 
-                   color = "white",  alpha = 0.7) + 
-  xlab(xcorrtxt)+ylab(ycorrtxt) +
-  theme_bw() +
-  theme(
-    axis.title.x = element_text(color="grey30", size=13),
-    axis.title.y = element_text(color="grey30", size=13),
-    axis.text.x = element_text(face="bold", color="grey30", size=10),
-    axis.text.y = element_text(face="bold", color="grey30", size=10)
-  )
-
-ppi <- 300
-png(paste0("graphs/kdegree_vs_degree_",red,"_",languageEl,".png"), width=(12*ppi), height=3*ppi, res=ppi)
-grid.arrange(distr2,grafs$scatterdegkdeg, ncol=2, nrow=1, widths=c(1/2,1/2) )
-dev.off()
-
-ppi <- 300
-png(paste0("graphs/ALL_plots_kdegree_degree_",red,"_",languageEl,".png"), width=(12*ppi), height=8*ppi, res=ppi)
-grid.arrange(arrangeGrob(distr2,grafs$scatterdegkdeg, ncol=2, nrow=1, widths=c(1/2,1/2) ), 
-             nrow=2, heights=c(0.5,0.5),
-             arrangeGrob(grafs$dist_deg,grafs$dist_kdeg,grafs$dist_dkdeg, ncol=3, nrow=1, widths=c(1/3,1/3,1/3) ))
-dev.off()
+# load("results/datos_analisis_condegs.RData")
+# distr2 <- ggplot(data = resultdf, aes(x = sqrt(kdegdegRsq) ))+ 
+#   geom_histogram(  fill = "palegreen4", 
+#                    color = "white",  alpha = 0.7) + 
+#   xlab(xcorrtxt)+ylab(ycorrtxt) +
+#   theme_bw() +
+#   theme(
+#     axis.title.x = element_text(color="grey30", size=13),
+#     axis.title.y = element_text(color="grey30", size=13),
+#     axis.text.x = element_text(face="bold", color="grey30", size=10),
+#     axis.text.y = element_text(face="bold", color="grey30", size=10)
+#   )
+# 
+# ppi <- 300
+# png(paste0("graphs/kdegree_vs_degree_",red,"_",languageEl,".png"), width=(12*ppi), height=3*ppi, res=ppi)
+# grid.arrange(distr2,grafs$scatterdegkdeg, ncol=2, nrow=1, widths=c(1/2,1/2) )
+# dev.off()
+# 
+# ppi <- 300
+# png(paste0("graphs/ALL_plots_kdegree_degree_",red,"_",languageEl,".png"), width=(12*ppi), height=8*ppi, res=ppi)
+# grid.arrange(arrangeGrob(distr2,grafs$scatterdegkdeg, ncol=2, nrow=1, widths=c(1/2,1/2) ), 
+#              nrow=2, heights=c(0.5,0.5),
+#              arrangeGrob(grafs$dist_deg,grafs$dist_kdeg,grafs$dist_dkdeg, ncol=3, nrow=1, widths=c(1/3,1/3,1/3) ))
+# dev.off()

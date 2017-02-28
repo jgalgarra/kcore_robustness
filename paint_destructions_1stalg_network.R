@@ -19,7 +19,6 @@ for (j in ficheros)
 
 calc_stats_network <- function(dfinput, network)
 {
-  #dfsal <- data.frame( Network=NA, giant_component=NA, krisk=NA, degree=NA, kdegree=NA,eigenc=NA, best =NA)[numeric(0), ]
   dfparcsal <- data.frame( Network="", giant_component=0, NoOrder = 0, krisk = 0,
                            degree=0,kdegree=0, eigenc=0, best = 0)
   dfnet <- dfinput[dfinput$Network == network,]
