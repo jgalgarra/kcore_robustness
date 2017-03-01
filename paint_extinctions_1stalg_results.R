@@ -82,7 +82,7 @@ for (i in 1:nrow(aux_ord_df))
 
 results_by_row <- results_by_row[order(results_by_row$index),]
 cols <- c("kdegree" = "darkgreen", "eigen" = "violetred3","degree" = "blue", "krisk" = "red", "best" = "forestgreen")
-pshapes <- c("kdegree" = 0, "eigen" = 1,"degree" = 3, "krisk" = 4, "best" = 3)
+pshapes <- c("kdegree" = 0, "eigen" = 20,"degree" = 3, "krisk" = 4, "best" = 24)
 
 
 results_by_r <- results_by_row[is.element(results_by_row$Index, c("krisk","kdegree","degree","eigen")),]
@@ -117,6 +117,7 @@ for (m in 1:nrow(results_by_q))
   results_by_q$isbest[m] <- results_o[results_o$Network == results_by_q[m,]$Network,]$performance == results_by_q$performance[m]
 }
 
+results_by_q_best <- results_by_q[results_by_q$isbest,]
 q <- ggplot(results_by_q, aes(x=giant_component, y = comp_perf, color = Index, shape = Index)) +
   geom_point( size = 2,lwd = 1.5) + scale_x_log10() + xlab(xtxt2)+
   scale_color_manual(values  = cols) +
@@ -130,7 +131,7 @@ q <- ggplot(results_by_q, aes(x=giant_component, y = comp_perf, color = Index, s
 q <- q + facet_grid(Index ~.)
 
 qb <- ggplot(results_by_q_best, aes(x=giant_component, y = comp_perf, color = Index, shape = Index)) +
-  geom_point( size = 4,stroke = 1.5) + scale_x_log10() + xlab(xtxt2)+
+  geom_point( size = 2,stroke = 1.5) + scale_x_log10() + xlab(xtxt2)+
   scale_color_manual(values  = cols) + ggtitle("Destruction removing species of both classes. Top performer")+
   theme_bw()  +
   scale_shape_manual(values = pshapes) +
